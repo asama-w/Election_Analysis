@@ -152,5 +152,4 @@ file_to_load = os.path.join("Resources", "election_results.csv")
 #to this
 file_to_load = os.path.join("Resources", "federal_election_results.csv")
 ```
-Another modification example that can be done is to check whether there are repeated Ballot ID stored in the dataset or not, to audit the correctness of the election results.
-For example, when determining the `total_votes`
+Another modification example that can be done is to check whether there are repeated Ballot ID stored in the dataset or not, check for the duplicate of the Ballot ID column, to audit the correctness of the election results.
