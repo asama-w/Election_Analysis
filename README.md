@@ -13,7 +13,7 @@ The given tasks for the python script to be executed in the vote count report in
 ### Election Data Resources
 The to-be-analyzed election results are stored in a csv file named `election_results.csv`, which has over 300,000 inputs. There are 3 categories of data collected: Ballot ID, County, and Candidate name. 
 
-The screenshot of the data outline when opens in excel is shown in the following.
+The following shows the screenshot of the dataset outline when opens in excel.
 
 ![data_outline](https://github.com/asama-w/Election_Analysis/blob/main/Additional%20Images/Data_cvs_example.png)
 
@@ -74,7 +74,6 @@ with open(file_to_load) as election_data:
         # 5: Add a vote to that county's vote count.
         county_votes[county_name] += 1
 ```
-
 - Output the results in VSCode terminal and save the results to the text file;
 
 ```python
@@ -90,6 +89,15 @@ with open(file_to_save, "w") as txt_file:
     # 8: Save the county with the largest turnout to a text file.
     txt_file.write(largest_county_turnout)
 ```
+- Calculate the percentage of the total vote
+
+```python
+    for candidate_name in candidate_votes:
+        # Retrieve vote count and percentage
+        votes = candidate_votes.get(candidate_name)
+        vote_percentage = float(votes) / float(total_votes) * 100
+```
+
 ## Election Audit Results
 By executing the final code in `PyPoll_Challenge.py`, the similar results output is printed on terminal and saved in a text file, as shown in the following screenshots.
 
