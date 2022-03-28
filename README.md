@@ -142,7 +142,7 @@ The analysis of this election results is done through the execution of different
 
 This python script application does not only limit to this election analysis, but can also be modified and apply to other analysis, such as a major election with higher number of ballots, county, and candidates. As the dataset gets larger, there are more rows and columns of inputs, it is difficult and time-consuming to manually go through each line of the data and subtract the information from it, thus, modifying the Python codes is important.
 
-By editing the file path in this command line to other desired csv file, this Python script can be used with other dataset, as it will still run through all the rows of the dataset, collect the data in the selected column index, store it in the list and dictionary, and output it as instructed in the code.
+By editing the file path in this command line to other desired csv file, this Python script can be used with other dataset, as long as the ballot ID, the county, and the candidate names are stored respectively in the similar column index order, the script will still run through all the rows of the dataset, collect the data in the selected column index, store it in the list and dictionary, and output it as instructed in the code.
 For example, to analyze `federal_election_results.csv`, put the file in `Resources` folder and change the path name to federal_election_results.csv
 
 ```python
@@ -152,3 +152,5 @@ file_to_load = os.path.join("Resources", "election_results.csv")
 #to this
 file_to_load = os.path.join("Resources", "federal_election_results.csv")
 ```
+Another modification example that can be done is to check whether there are repeated Ballot ID stored in the dataset or not, to audit the correctness of the election results.
+For example, when determining the `total_votes`
