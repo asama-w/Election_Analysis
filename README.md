@@ -38,10 +38,13 @@ file_to_load = os.path.join("Resources", "election_results.csv")
 # Add a variable to save the file to a path.
 file_to_save = os.path.join("analysis", "election_results.txt")
 ```
-- To read the csv file and analyze it;
+- Read the csv file and analyze it;
 
 ```python
 total_votes = 0
+# Create a county list and county votes dictionary.
+county_options = []
+county_votes = {}
 
 with open(file_to_load) as election_data:
     reader = csv.reader(election_data)
@@ -53,8 +56,26 @@ with open(file_to_load) as election_data:
         # Add to the total vote count
         total_votes = total_votes + 1
 ```
+- Get county list and the total vote of each county;
 
-- To output the results in VSCode terminal and save the results to the text file;
+```python
+        # Get the candidate name from each row.
+        candidate_name = row[2]
+        # 3: Extract the county name from each row.
+        county_name = row[1]
+        if county_name not in county_options:
+
+            # 4b: Add the existing county to the list of counties.
+            county_options.append(county_name)
+
+            # 4c: Begin tracking the county's vote count.
+            county_votes[county_name] = 0
+
+        # 5: Add a vote to that county's vote count.
+        county_votes[county_name] += 1
+```
+
+- Output the results in VSCode terminal and save the results to the text file;
 
 ```python
 with open(file_to_save, "w") as txt_file:
@@ -70,7 +91,7 @@ with open(file_to_save, "w") as txt_file:
     txt_file.write(largest_county_turnout)
 ```
 ## Election Audit Results
-By executing the final code in `PyPoll_Challange.py`, the similar results output is printed on terminal and saved in a text file, as shown in the following screenshots.
+By executing the final code in `PyPoll_Challenge.py`, the similar results output is printed on terminal and saved in a text file, as shown in the following screenshots.
 
 ### Command Output (in VSCode Terminal)
 
@@ -80,10 +101,10 @@ By executing the final code in `PyPoll_Challange.py`, the similar results output
 
 ![textfile_output](https://github.com/asama-w/Election_Analysis/blob/main/Additional%20Images/Text_file_output.png)
 
-### Election Outcomes
-1. Total Number of Votes: **369,711 votes**
+### Election Outcomes Summary
+1. **Total Number of Votes:** 369,711 votes
 
-2. There are total of 3 counties in this election: 
+2. **County List:** There are total of 3 counties in this election: 
     
     The county name, total votes count, and percentage of total votes, are shown in the following table in a descending order.
     |No.|County|Total Votes|Percentage of Total Votes|Note|
@@ -92,7 +113,7 @@ By executing the final code in `PyPoll_Challange.py`, the similar results output
     |2.|Jefferson|38,855|10.5%| - |
     |3.|Arapahoe|24,801 | 6.7%| - | 
     
-3. There are total of 3 candidates in this election: 
+3. **Candidate List:** There are total of 3 candidates in this election: 
 
     The candidate name, total votes count, and percentage of total votes, are shown in the following table in a descending order.
     |No.|Candidate|Total Votes|Percentage of Total Votes|Note|
@@ -101,9 +122,9 @@ By executing the final code in `PyPoll_Challange.py`, the similar results output
     |2.|Charles Casper Stockham|85,213|23.0%| - |
     |3.|Raymon Anthony Doane|11,606 | 3.1%| - | 
     
-4. The **winner of this election** based on popular vote is **Diana DeGette**.
-    |Candidate|Total Votes|Percentage of Total Votes|Note|
+4. **The Winner of This Election** based on popular vote is **Diana DeGette**.
+    |Winner Candidate|Total Votes|Percentage of Total Votes|Note|
     |:----:|:----:|:----:|:----:|
-    |Diana DeGette|272,892 |73.8% |Winner|
+    |Diana DeGette|272,892|73.8% |Winner|
 
 ## Election Audit Summary
